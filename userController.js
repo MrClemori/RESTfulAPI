@@ -9,8 +9,8 @@ class userController{
             const isPassword = await Functions.checkLogAndPassword(req.body.password)
             const isLoginUnicity = await Functions.checkLoginForUnicity(req.body.login)
             if(isName &&  isLogin &&  isPassword && isLoginUnicity){
-                const user = await userService.create(req.body) 
-                res.json(user)
+                // const user = await userService.create(req.body) 
+                // res.json(user)
             } else {
                 res.status(500).json('Error')
             }

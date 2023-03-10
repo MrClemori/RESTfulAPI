@@ -1,4 +1,5 @@
 import userService from "./userService.js"
+import User from "./user.js"
 
 class Functions{
     checkLogAndPassword (text) {
@@ -10,10 +11,9 @@ class Functions{
         return res
     }
     async checkLoginForUnicity (login){
-        const users = await userService.getAll()
-        const user = users.find(e => e.login === login)
-        if(user === undefined) return true
-        else return false
+        const user = await User.find( {login: login} )
+        if(user.length > 0) return false
+        else return true
     }
 }
 
